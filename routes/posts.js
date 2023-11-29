@@ -1,12 +1,12 @@
 const express = require('express');
-const { ObjectId } = require('mongodb'); // Import ObjectId
 const router = express.Router();
+const verify = require("../validations/VerifyUserToken")
 
 //importing Schema from model folder
-const Post = require('../model/postData')
+const Post = require('../model/postSchema')
 
 //get all Post
-router.get('/', async (req, res) => {
+router.get('/', verify, async (req, res) => {
     try {
         const allData = await Post.find();
         res.status(200).send({ success: true, data: allData });
