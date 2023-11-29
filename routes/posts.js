@@ -11,7 +11,7 @@ router.get('/', verify, async (req, res) => {
         const allData = await Post.find();
         res.status(200).send({ success: true, data: allData });
     } catch (err) {
-        return res.status(500).json({ success: false, message: err})
+        return res.status(400).json({ success: false, message: err})
     }
 });
 
@@ -29,7 +29,7 @@ router.post('/create', async (req, res) => {
         const savedPost = await post.save();
         res.status(200).send({ success: true, data: savedPost });
     } catch (err) {
-        return res.status(500).json({ success: false, message: err})
+        return res.status(400).json({ success: false, message: err})
     }
 });
 
@@ -39,7 +39,7 @@ router.get("/:postId", async (req,res) => {
         const specificPost = await Post.findById(req.params.postId);
         res.status(200).send({ success: true, data: specificPost });
     } catch (err) {
-        return res.status(500).json({ success: false, message: err})
+        return res.status(400).json({ success: false, message: err})
     }
 });
 
@@ -61,7 +61,7 @@ router.patch("/update/:postId", async (req, res) => {
 
         res.status(200).send({ success: true, data: updatedPost });
     } catch (err) {
-        return res.status(500).json({ success: false, message: err });
+        return res.status(400).json({ success: false, message: err });
     }
 });
 
@@ -78,7 +78,7 @@ router.delete("/delete/:postId", async (req, res) => {
 
         res.status(200).send({ success: true, data: removePost });
     } catch (err) {
-        return res.status(500).json({ success: false, message: err });
+        return res.status(400).json({ success: false, message: err });
     }
 });
 

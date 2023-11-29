@@ -65,7 +65,7 @@ router.post('/login',  async (req, res) => {
     const token = JWT.sign({_id: user._id}, process.env.USER_TOKEN);
     res.header('auth-token', token)
     .status(200)
-    .send({ success: true, token: token });
+    .send({ success: true, token: token, });
 })
 
 module.exports = router;
